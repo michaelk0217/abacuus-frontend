@@ -2,7 +2,7 @@ import * as React from "react";
 import type { AuthProvider } from "@toolpad/core";
 import { SignInPage } from "@toolpad/core/SignInPage";
 import { AuthError } from "next-auth";
-import { providerMap, signIn } from "../../../auth";
+import { providerMap, signIn } from "@/auth";
 
 export default function SignIn() {
   return (

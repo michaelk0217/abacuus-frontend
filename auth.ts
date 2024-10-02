@@ -21,7 +21,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers,
   secret: process.env.AUTH_SECRET,
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/dashboard/auth/signin",
   },
   callbacks: {
     async jwt({ token, account }) {
@@ -81,7 +81,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     authorized({ auth: session, request: { nextUrl } }) {
       const isLoggedIn = !!session?.user;
-      const isPublicPage = nextUrl.pathname.startsWith("/public");
+      const isPublicPage =
+        nextUrl.pathname.startsWith("/public") || nextUrl.pathname === "/";
 
       if (isPublicPage || isLoggedIn) {
         return true;

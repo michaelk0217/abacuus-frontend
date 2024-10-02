@@ -185,7 +185,7 @@ export default function FavSymbolCell({ favSymbolData }: FavSymbolCellProps) {
 
   const handleCellClick = () => {
     const encodedSymbol = encodeURIComponent(favSymbolData.ticker_symbol);
-    router.push(`/favorites/${encodedSymbol}`);
+    router.push(`/dashboard/favorites/${encodedSymbol}`);
   };
 
   return (

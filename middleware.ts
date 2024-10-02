@@ -6,5 +6,8 @@ export const config = {
   // matcher: ['/((?!api|_next/static|_next/image|.*\.png$).*)'],
 
   //this is to prevent the middleware from being applied to the landing page
-  matcher: ["/((?!api|_next/static|_next/image|.*.png$|landing).*)"],
+  // matcher: ["/((?!api|_next/static|_next/image|.*.png$|landing).*)"],
+
+  // matcher: ["/((?!api|_next/static|_next/image|.*.png$|landing|^$).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$|landing|^$|^/$).*)"],
 };
