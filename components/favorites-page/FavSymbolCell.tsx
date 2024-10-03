@@ -151,7 +151,7 @@ export default function FavSymbolCell({ favSymbolData }: FavSymbolCellProps) {
 
   useEffect(() => {
     if (favSymbolData.current_price > 0) {
-      setPriceColor("green");
+      setPriceColor("#02e32b");
     } else {
       setPriceColor("red");
     }

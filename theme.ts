@@ -52,8 +52,8 @@ export const customTheme = createTheme({
     dark: {
       palette: {
         background: {
-          default: "#111111", //radix-gray-1
-          paper: "#191919", //radix-gray-2
+          default: "#000000", //radix-gray-1
+          paper: "#111111", //radix-gray-2
         },
         text: {
           primary: "#EEEEEE", //radix-gray-12

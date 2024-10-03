@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { AlignJustify, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import ShinyButton from "./magicui/shiny-button";
 
 const menuItem = [
   {
@@ -78,6 +80,7 @@ export function SiteHeader() {
   };
 
   const [hamburgerMenuIsOpen, setHamburgerMenuIsOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const html = document.querySelector("html");
@@ -100,22 +103,23 @@ export function SiteHeader() {
       <header className="fixed left-0 top-0 z-50 w-full translate-y-[-1rem] animate-fade-in border-b opacity-0 backdrop-blur-[12px] [--animation-delay:600ms]">
         <div className="container flex h-[3.5rem] items-center justify-between">
           <Link className="text-md flex items-center" href="/">
-            Magic UI
+            Abacuus
           </Link>
 
           <div className="ml-auto flex h-full items-center">
-            <Link className="mr-6 text-sm" href="/signin">
+            {/* <Link className="mr-6 text-sm" href="/signin">
               Log in
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               className={cn(
                 buttonVariants({ variant: "secondary" }),
                 "mr-6 text-sm"
               )}
-              href="/signup"
+              href="/dashboard"
             >
-              Sign up
-            </Link>
+              Sign in
+            </Link> */}
+            <ShinyButton>Coming soon</ShinyButton>
           </div>
           <button
             className="ml-6 md:hidden"
@@ -141,7 +145,7 @@ export function SiteHeader() {
         >
           <div className="container flex h-[3.5rem] items-center justify-between">
             <Link className="text-md flex items-center" href="/">
-              Magic UI
+              Abacuus
             </Link>
 
             <button

@@ -9,6 +9,7 @@ import type { Navigation } from "@toolpad/core";
 import { SessionProvider, signIn, signOut } from "next-auth/react";
 import { auth } from "@/auth";
 import { customTheme } from "@/theme";
+// import { ChartColumnStacked } from "lucide-react";
 
 const NAVIGATION: Navigation = [
   {
@@ -49,7 +50,8 @@ const NAVIGATION: Navigation = [
 ];
 
 const BRANDING = {
-  title: "Abacuus",
+  title: "ABACUUS",
+  // icon: <img src="/chart-column-stacked.png" alt="Abacuus" />,
 };
 
 const AUTHENTICATION = {

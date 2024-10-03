@@ -7,48 +7,49 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import {
   BarChart,
   ChevronRight,
-  File,
-  Globe,
-  HeartHandshake,
-  Rss,
-  Shield,
+  ChartNoAxesCombined,
+  ChartPie,
+  ChartCandlestick,
+  ChartNetwork,
+  Layers,
+  Blocks,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 
 const tiles = [
   {
-    icon: <HeartHandshake className="size-full" />,
+    icon: <Layers className="size-full" />,
     bg: (
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-violet-600 opacity-70 blur-[20px] filter"></div>
     ),
   },
   {
-    icon: <Globe className="size-full" />,
+    icon: <ChartPie className="size-full" />,
     bg: (
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-70 blur-[20px] filter"></div>
     ),
   },
   {
-    icon: <File className="size-full" />,
+    icon: <ChartCandlestick className="size-full" />,
     bg: (
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-green-500 via-teal-500 to-emerald-600 opacity-70 blur-[20px] filter"></div>
     ),
   },
   {
-    icon: <Shield className="size-full" />,
+    icon: <ChartNetwork className="size-full" />,
     bg: (
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-600 opacity-70 blur-[20px] filter"></div>
     ),
   },
   {
-    icon: <Rss className="size-full" />,
+    icon: <BarChart className="size-full" />,
     bg: (
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-orange-600 via-rose-600 to-violet-600 opacity-70 blur-[20px] filter"></div>
     ),
   },
   {
-    icon: <BarChart className="size-full" />,
+    icon: <Blocks className="size-full" />,
     bg: (
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible rounded-full bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 opacity-70 blur-[20px] filter"></div>
     ),
@@ -172,14 +173,14 @@ export default function CallToActionSection() {
             </Marquee>
             <div className="absolute z-10">
               <div className="mx-auto size-24 rounded-[2rem] border bg-white/10 p-3 shadow-2xl backdrop-blur-md dark:bg-black/10 lg:size-32">
-                <HeartHandshake className="mx-auto size-16 text-black dark:text-white lg:size-24" />
+                <ChartNoAxesCombined className="mx-auto size-16 text-black dark:text-white lg:size-24" />
               </div>
               <div className="z-10 mt-4 flex flex-col items-center text-center text-primary">
                 <h1 className="text-3xl font-bold lg:text-4xl">
-                  Stop wasting time on design.
+                  Don't miss your buy signal.
                 </h1>
                 <p className="mt-2">
-                  Start your 7-day free trial. No credit card required.
+                  Currently under development for web and mobile.
                 </p>
                 <Link
                   href="#"
@@ -190,8 +191,10 @@ export default function CallToActionSection() {
                     }),
                     "group mt-4 rounded-[2rem] px-6"
                   )}
+                  aria-disabled="true"
+                  onClick={(e) => e.preventDefault()}
                 >
-                  Get Started
+                  Coming soon
                   <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
                 </Link>
               </div>

@@ -1,12 +1,13 @@
-import { cn } from "@/lib/utils/utils";
+import { cn } from "@/lib/utils";
 
 export const SphereMask = ({ reverse = false }: { reverse?: boolean }) => {
+  // console.log("SphereMask component is rendering");
   return (
     <div
       className={cn(
         // color
         "[--color:var(--color-one)]",
-        "pointer-events-none relative -z-[2] mx-auto h-[50rem] overflow-hidden",
+        "pointer-events-none relative z-[2] mx-auto h-[50rem] overflow-hidden",
 
         // sphere mask
         "[mask-image:radial-gradient(ellipse_at_center_center,#000,transparent_50%)]",
@@ -20,6 +21,8 @@ export const SphereMask = ({ reverse = false }: { reverse?: boolean }) => {
         // after
         "after:absolute after:-left-1/2 after:top-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[50%] after:border-t after:border-[hsl(var(--border))] after:bg-background"
       )}
-    ></div>
+    >
+      {/* <p>SphereMask is here</p> */}
+    </div>
   );
 };

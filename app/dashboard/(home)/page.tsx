@@ -1,13 +1,11 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import { auth } from "@/auth";
+// import { auth } from "@/auth";
 
 export default async function HomePage() {
-  const session = await auth();
-
   return (
     <Typography>
-      Welcome to Toolpad, {session?.accessToken || "User"}!
+      Welcome to Abacuus! This web app is currently under development.
     </Typography>
   );
 }
