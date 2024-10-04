@@ -6,6 +6,7 @@ import { Button } from "@/components/landing-page/ui/button";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 export default function HeroSection() {
   const ref = useRef(null);

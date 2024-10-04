@@ -45,7 +45,7 @@ export default function FavSymbolList() {
       clearInterval(intervalId);
       isMounted = false;
     };
-  }, [session]);
+  }, [url, session]);
 
   return (
     <Box sx={{ width: "100%" }}>

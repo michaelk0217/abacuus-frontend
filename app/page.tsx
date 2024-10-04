@@ -1,12 +1,9 @@
-import ClientSection from "@/components/landing-page/landing/client-section";
 import CallToActionSection from "@/components/landing-page/landing/cta-section";
 import HeroSection from "@/components/landing-page/landing/hero-section";
-import PricingSection from "@/components/landing-page/landing/pricing-section";
 import MobileShowcaseSection from "@/components/landing-page/landing/mobile-showcase-section";
 import Particles from "@/components/landing-page/magicui/particles";
 import { SphereMask } from "@/components/landing-page/magicui/sphere-mask";
 import { SiteHeader } from "@/components/landing-page/site-header";
-import { SiteFooter } from "@/components/landing-page/site-footer";
 import { Inter as FontSans } from "next/font/google";
 import { ThemeProvider } from "@/components/landing-page/theme-provider";
 import { cn } from "@/lib/utils";

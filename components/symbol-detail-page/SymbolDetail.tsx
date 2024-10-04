@@ -46,7 +46,7 @@ export default function SymbolDetail() {
       clearInterval(intervalId);
       isMounted = false;
     };
-  }, [symbolTicker, session]);
+  }, [symbolTicker, session, url]);
 
   if (loading) {
     return <Typography>Loading...</Typography>;

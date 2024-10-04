@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import ShinyButton from "./magicui/shiny-button";
-
+import Image from "next/image";
 const menuItem = [
   {
     id: 1,
@@ -103,10 +103,12 @@ export function SiteHeader() {
       <header className="fixed left-0 top-0 z-50 w-full translate-y-[-1rem] animate-fade-in border-b opacity-0 backdrop-blur-[12px] [--animation-delay:600ms]">
         <div className="container flex h-[3.5rem] items-center justify-between">
           <Link className="text-md flex items-center" href="/">
-            <img
+            <Image
               src="/abacuus-icon.png"
               alt="Abacuus Icon"
               className="mr-2 h-6 w-6"
+              width={24}
+              height={24}
             />
             Abacuus
           </Link>

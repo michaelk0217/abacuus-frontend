@@ -177,7 +177,7 @@ export default function CallToActionSection() {
               </div>
               <div className="z-10 mt-4 flex flex-col items-center text-center text-primary">
                 <h1 className="text-3xl font-bold lg:text-4xl">
-                  Don't miss your buy signal.
+                  Don&apos;t miss your buy signal.
                 </h1>
                 <p className="mt-2">
                   Currently under development for web and mobile.
