@@ -24,7 +24,10 @@ The backend is hosted on AWS, implemented with Django rest framework.
 1. Clone the repository
 
 2. Run `npm install` to install the dependencies
-3. Run `npm run dev` to start the development server
+
+3. Set up environment variables for the backend api url, auth secret, and Google OAuth credentials
+
+4. Run `npm run dev` to start the development server
 
 ## Change log
 
