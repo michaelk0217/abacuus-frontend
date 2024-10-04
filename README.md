@@ -28,6 +28,11 @@ The backend is hosted on AWS, implemented with Django rest framework.
 
 ## Change log
 
+### 10/03/24
+
+- Finished landing page ui
+- Used several shadcn/ui and magicui components
+
 ### 10/02/24
 
 - Restructured project to have the main app have url that begins with /dashboard
