@@ -34,17 +34,41 @@ export default function Home() {
         <HeroSection />
         <SphereMask />
         <MobileShowcaseSection />
+        <SphereMask reverse={true} />
         <CallToActionSection />
-        {/* <SphereMask reverse={true} /> */}
         <Particles
-          className="absolute inset-0 -z-10"
-          quantity={50}
-          ease={70}
-          size={0.05}
-          staticity={40}
+          className="absolute inset-0"
+          quantity={100}
+          ease={80}
+          size={0.5}
+          staticity={30}
           color={"#ffffff"}
+          // vx={5}
+          // vy={1}
+          refresh={true}
         />
-        {/* <SiteFooter /> */}
+        <Particles
+          className="absolute inset-0"
+          quantity={10}
+          ease={80}
+          size={0.5}
+          staticity={30}
+          color={"#ffffff"}
+          vx={-2}
+          vy={-1}
+          refresh={true}
+        />
+        <Particles
+          className="absolute inset-0"
+          quantity={10}
+          ease={80}
+          size={0.5}
+          staticity={30}
+          color={"#ffffff"}
+          vx={2}
+          vy={-1}
+          refresh={true}
+        />
       </ThemeProvider>
     </div>
   );

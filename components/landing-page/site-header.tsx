@@ -103,6 +103,11 @@ export function SiteHeader() {
       <header className="fixed left-0 top-0 z-50 w-full translate-y-[-1rem] animate-fade-in border-b opacity-0 backdrop-blur-[12px] [--animation-delay:600ms]">
         <div className="container flex h-[3.5rem] items-center justify-between">
           <Link className="text-md flex items-center" href="/">
+            <img
+              src="/abacuus-icon.png"
+              alt="Abacuus Icon"
+              className="mr-2 h-6 w-6"
+            />
             Abacuus
           </Link>
 
@@ -121,13 +126,13 @@ export function SiteHeader() {
             </Link> */}
             <ShinyButton>Coming soon</ShinyButton>
           </div>
-          <button
+          {/* <button
             className="ml-6 md:hidden"
             onClick={() => setHamburgerMenuIsOpen((open) => !open)}
           >
             <span className="sr-only">Toggle menu</span>
             {hamburgerMenuIsOpen ? <XIcon /> : <AlignJustify />}
-          </button>
+          </button> */}
         </div>
       </header>
       <AnimatePresence>
