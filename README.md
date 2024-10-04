@@ -129,5 +129,5 @@ The backend is hosted on AWS, implemented with Django rest framework.
 
 - Initial commit
 - Pages and fist authentication setup
-- Basic navigation setup
+- Basic n2avigation setup
 ### TEST
