@@ -59,9 +59,11 @@ export default function SymbolDetailCandlestickChart({
       type: "category",
       data: dates,
       boundaryGap: false,
+      show: true,
     },
     yAxis: {
       scale: true,
+      show: true,
     },
     grid: {
       left: "10%",

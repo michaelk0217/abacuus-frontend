@@ -51,7 +51,7 @@ const NAVIGATION: Navigation = [
 
 const BRANDING = {
   title: "ABACUUS",
-  // icon: <img src="/chart-column-stacked.png" alt="Abacuus" />,
+  logo: <img src="/abacuus-icon.png" alt="Abacuus" />,
 };
 
 const AUTHENTICATION = {

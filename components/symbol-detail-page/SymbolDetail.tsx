@@ -5,9 +5,11 @@ import { CSapiGetCall } from "@/lib/backend-api/api";
 import { useSession } from "next-auth/react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid2";
 import { useParams } from "next/navigation";
 import SymbolDetailHeader from "./SymbolDetailHeader";
 import SymbolDetailCandlestickChart from "./SymbolDetailCandlestickChart";
+import MacdBBCell from "./MacdBBCell";
 
 export default function SymbolDetail() {
   const { symbolTicker } = useParams();
@@ -63,9 +65,37 @@ export default function SymbolDetail() {
         symbolData={symbolData}
         decodedSymbolTicker={decodedSymbolTicker}
       />
-      <Box sx={{ maxWidth: "60%", height: "500px" }}>
-        <SymbolDetailCandlestickChart symbolData={symbolData} />
-      </Box>
+      <Grid container spacing={2}>
+        <Grid size={{ xl: 8, lg: 8, md: 12, sm: 12, xs: 12 }}>
+          <Box
+            sx={{
+              height: "500px",
+              border: "2px solid #FFFFFF",
+              borderRadius: "12px",
+              marginTop: "1rem",
+            }}
+          >
+            <SymbolDetailCandlestickChart symbolData={symbolData} />
+          </Box>
+        </Grid>
+        <Grid
+          container
+          size={{ xl: 4, lg: 4, md: 12, sm: 12, xs: 12 }}
+          spacing={2}
+          direction={"column"}
+          marginTop={"1rem"}
+        >
+          <Grid width={"100%"}>
+            <MacdBBCell symbolData={symbolData} interval="15m" />
+          </Grid>
+          <Grid width={"100%"}>
+            <MacdBBCell symbolData={symbolData} interval="1h" />
+          </Grid>
+          <Grid width={"100%"}>
+            <MacdBBCell symbolData={symbolData} interval="1d" />
+          </Grid>
+        </Grid>
+      </Grid>
     </>
   );
 }
