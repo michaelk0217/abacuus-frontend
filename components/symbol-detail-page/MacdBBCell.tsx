@@ -74,6 +74,7 @@ function RenderBBandCell({ color, text, ratio }: BBandCellProps) {
         padding: "0",
         border: 1,
         borderColor: color,
+        width: "65px",
         textAlign: "center",
       }}
     >
@@ -120,6 +121,8 @@ function RenderMACDCell({
         borderRadius: "4px",
         paddingX: "2px",
         color: "black",
+        width: "65px",
+        textAlign: "center",
       }}
     >
       {percentage.toFixed(3)}%
@@ -266,6 +269,8 @@ export default function MacdBBCell({
                   borderRadius: "4px",
                   paddingX: "2px",
                   color: "black",
+                  width: "45px",
+                  textAlign: "center",
                 }}
               >
                 {action()}

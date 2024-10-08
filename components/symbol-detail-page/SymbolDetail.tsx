@@ -10,6 +10,7 @@ import { useParams } from "next/navigation";
 import SymbolDetailHeader from "./SymbolDetailHeader";
 import SymbolDetailCandlestickChart from "./SymbolDetailCandlestickChart";
 import MacdBBCell from "./MacdBBCell";
+import TradingEventTable from "./TradingEventTable";
 
 export default function SymbolDetail() {
   const { symbolTicker } = useParams();
@@ -96,6 +97,7 @@ export default function SymbolDetail() {
           </Grid>
         </Grid>
       </Grid>
+      <TradingEventTable tickerSymbol={decodedSymbolTicker} />
     </>
   );
 }

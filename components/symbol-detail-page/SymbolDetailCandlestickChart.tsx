@@ -76,10 +76,10 @@ export default function SymbolDetailCandlestickChart({
         type: "candlestick",
         data: candleData,
         itemStyle: {
-          color: "#ec0000", // Up color
-          color0: "#00da3c", // Down color
-          borderColor: "#8A0000",
-          borderColor0: "#008F28",
+          color0: "#ec0000",
+          color: "#00da3c",
+          borderColor0: "#8A0000",
+          borderColor: "#008F28",
         },
       },
       {

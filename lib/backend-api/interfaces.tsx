@@ -92,3 +92,17 @@ export interface CandleData {
   bband_middle: number;
   bband_lower: number;
 }
+
+export interface TradingEvent {
+  ticker_symbol: string;
+  price: number;
+  datetime_timestamp: number;
+  action_type: string;
+  interval: string;
+  is_confirmed: boolean;
+  push_notification_id: number;
+}
+
+export interface TradingEventResponse {
+  trading_event_list: TradingEvent[];
+}

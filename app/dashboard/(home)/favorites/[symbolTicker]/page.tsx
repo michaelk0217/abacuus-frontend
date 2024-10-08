@@ -3,7 +3,7 @@
 // import { FavSymbolData } from "@/lib/backend-api/interfaces";
 // import { CSapiGetCall } from "@/lib/backend-api/api";
 // import { useSession } from "next-auth/react";
-// import Box from "@mui/material/Box";
+import Box from "@mui/material/Box";
 // import Typography from "@mui/material/Typography";
 // import { useParams } from "next/navigation";
 // import { PageContainer } from "@toolpad/core/PageContainer";
@@ -13,5 +13,9 @@
 import SymbolDetail from "@/components/symbol-detail-page/SymbolDetail";
 
 export default function SymbolDetailPage() {
-  return <SymbolDetail />;
+  return (
+    <Box sx={{ width: "100%" }}>
+      <SymbolDetail />
+    </Box>
+  );
 }
