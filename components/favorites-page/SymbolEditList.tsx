@@ -25,19 +25,16 @@ export default function SymbolEditList({ open }: SymbolInfoListCheckboxProps) {
   const [symbolInfoList, setSymbolInfoList] = React.useState<SymbolInfoList[]>(
     []
   );
+  const router = useRouter();
   const get_symbol_info_list_url = `${process.env.NEXT_PUBLIC_ABACUUS_API_URL}/get_symbol_info_list/`;
   const { data: session } = useSession({ required: true });
 
-  if (!session) {
-    return <div>Loading...</div>;
-  }
-
-  const router = useRouter();
   useEffect(() => {
-    // console.log("open", open);
-
     let isMounted = true;
     const fetchSymbolInfoList = async () => {
+      if (!session) {
+        return;
+      }
       try {
         const data = await CSapiGetCall(session, get_symbol_info_list_url);
         if (isMounted) {
@@ -70,6 +67,9 @@ export default function SymbolEditList({ open }: SymbolInfoListCheckboxProps) {
 
   const handleToggle = async (ticker: string, currentFavorite: boolean) => {
     try {
+      if (!session) {
+        return;
+      }
       const newFavoriteStatus = !currentFavorite;
       const set_favorite_symbol_url = `${process.env.NEXT_PUBLIC_ABACUUS_API_URL}/set_favorite_symbol/?ticker_symbol=${ticker}&is_favorite=${newFavoriteStatus}`;
       await CSapiGetCall(session, set_favorite_symbol_url);
