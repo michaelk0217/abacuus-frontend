@@ -133,9 +133,11 @@ function RenderMACDCell({
 export default function MacdBBCell({
   symbolData,
   interval,
+  onClick,
 }: {
   symbolData: SymbolInfo;
   interval: string;
+  onClick?: () => void;
 }) {
   const action = () => {
     if (interval === "15m") {
@@ -256,6 +258,7 @@ export default function MacdBBCell({
         fontSize: "12px",
         // marginY: "1rem",
       }}
+      onClick={onClick}
     >
       <Grid container direction={"row"} spacing={2} sx={{ width: "100%" }}>
         <Grid container size={6} direction={"column"}>

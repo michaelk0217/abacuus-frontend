@@ -18,7 +18,13 @@ export default function SymbolDetail() {
   const { data: session } = useSession({ required: true });
   const [symbolData, setSymbolData] = useState<SymbolInfo | null>(null);
   const [loading, setLoading] = useState(true);
+  const [selectedInterval, setSelectedInterval] = useState<string>("15m");
   const url = `${process.env.NEXT_PUBLIC_ABACUUS_API_URL}/get_symbol_info/?ticker_symbol=${decodedSymbolTicker}`;
+
+  const handleMacdBBClick = (interval: string) => {
+    console.log(interval);
+    setSelectedInterval(interval);
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -76,7 +82,10 @@ export default function SymbolDetail() {
               marginTop: "1rem",
             }}
           >
-            <SymbolDetailCandlestickChart symbolData={symbolData} />
+            <SymbolDetailCandlestickChart
+              interval={selectedInterval}
+              symbolData={symbolData}
+            />
           </Box>
         </Grid>
         <Grid
@@ -87,13 +96,25 @@ export default function SymbolDetail() {
           marginTop={"1rem"}
         >
           <Grid width={"100%"}>
-            <MacdBBCell symbolData={symbolData} interval="15m" />
+            <MacdBBCell
+              onClick={() => handleMacdBBClick("15m")}
+              symbolData={symbolData}
+              interval="15m"
+            />
           </Grid>
           <Grid width={"100%"}>
-            <MacdBBCell symbolData={symbolData} interval="1h" />
+            <MacdBBCell
+              onClick={() => handleMacdBBClick("1h")}
+              symbolData={symbolData}
+              interval="1h"
+            />
           </Grid>
           <Grid width={"100%"}>
-            <MacdBBCell symbolData={symbolData} interval="1d" />
+            <MacdBBCell
+              onClick={() => handleMacdBBClick("1d")}
+              symbolData={symbolData}
+              interval="1d"
+            />
           </Grid>
         </Grid>
       </Grid>

@@ -4,23 +4,34 @@ import { SymbolInfo, CandleData } from "@/lib/backend-api/interfaces";
 
 export default function SymbolDetailCandlestickChart({
   symbolData,
+  interval,
 }: {
   symbolData: SymbolInfo;
+  interval: string;
 }) {
-  const candleData = symbolData.candle_1h_data_list.map((data: CandleData) => [
+  const selectedIntervalData = () => {
+    if (interval === "1h") {
+      return symbolData.candle_1h_data_list;
+    } else if (interval === "1d") {
+      return symbolData.candle_1d_data_list;
+    }
+    return symbolData.candle_15m_data_list;
+  };
+
+  const candleData = selectedIntervalData().map((data: CandleData) => [
     data.open,
     data.close,
     data.low,
     data.high,
   ]);
 
-  const bbandUpper = symbolData.candle_1h_data_list.map((data: CandleData) =>
+  const bbandUpper = selectedIntervalData().map((data: CandleData) =>
     data.bband_upper.toFixed(2)
   );
-  const bbandMiddle = symbolData.candle_1h_data_list.map((data: CandleData) =>
+  const bbandMiddle = selectedIntervalData().map((data: CandleData) =>
     data.bband_middle.toFixed(2)
   );
-  const bbandLower = symbolData.candle_1h_data_list.map((data: CandleData) =>
+  const bbandLower = selectedIntervalData().map((data: CandleData) =>
     data.bband_lower.toFixed(2)
   );
 
@@ -34,7 +45,7 @@ export default function SymbolDetailCandlestickChart({
     // second: "2-digit",
     // timeZoneName: "short",
   });
-  const dates = symbolData.candle_1h_data_list.map((_, index) =>
+  const dates = selectedIntervalData().map((_, index) =>
     dateFormatter.format(
       new Date(
         lastTimestamp * 1000 -
