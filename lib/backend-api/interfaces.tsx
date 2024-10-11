@@ -106,3 +106,21 @@ export interface TradingEvent {
 export interface TradingEventResponse {
   trading_event_list: TradingEvent[];
 }
+
+// for "/get_portfolio_config_list/"
+export interface PortfolioConfigList {
+  portfolio_config_id: number;
+  portfolio_name: string;
+  total_fund_amount: number;
+  starting_date: string; // Assuming the date is formatted as a string
+  balance: number;
+  gain_loss: number;
+  performance: number;
+  change: number;
+  change_percentage: number;
+  symbol_list: any[]; // Replace 'any' with the appropriate type if known
+  short_term_percentage: number;
+  mid_term_percentage: number;
+  long_term_percentage: number;
+  default_percentage: number;
+}
