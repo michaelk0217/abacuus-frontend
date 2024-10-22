@@ -3,6 +3,8 @@ import Typography from "@mui/material/Typography";
 import { PortfolioConfigList } from "@/lib/backend-api/interfaces";
 import Grid from "@mui/material/Grid2";
 import Divider from "@mui/material/Divider";
+import { useRouter } from "next/navigation";
+
 function PortfolioListCellItem({ children }: { children: React.ReactNode }) {
   return (
     <Box
@@ -22,6 +24,14 @@ export default function PortfolioListCell({
 }: {
   portfolio: PortfolioConfigList;
 }) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(
+      `/dashboard/portfolio/portfoliodetail/${portfolio.portfolio_config_id}`
+    );
+  };
+
   return (
     <Box
       sx={{
@@ -31,6 +41,7 @@ export default function PortfolioListCell({
         borderStyle: "solid",
         borderRadius: 2,
       }}
+      onClick={handleClick}
     >
       <Typography variant="h6">{portfolio.portfolio_name}</Typography>
       <Divider />

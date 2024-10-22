@@ -124,3 +124,42 @@ export interface PortfolioConfigList {
   long_term_percentage: number;
   default_percentage: number;
 }
+
+// Interface for individual symbol summary
+export interface SymbolSummary {
+  portfolio_config_id: number;
+  ticker_symbol: string;
+  price: number;
+  price_change_percentage: number;
+  shares: number;
+  equity_value: number;
+  equity_percentage: number;
+  performance: number;
+  adjusted_available_cash: number;
+  shares_to_buy: number;
+  short_term_action: string;
+  mid_term_action: string;
+  long_term_action: string;
+}
+
+// Interface for portfolio summary data
+export interface PortfolioSummaryData {
+  portfolio_config_id: number;
+  portfolio_name: string;
+  date: string; // Assuming the date is formatted as a string
+  balance: number;
+  change: number;
+  change_percentage: number;
+  performance: number;
+  gain_loss: number;
+  available_cash: number;
+  cash_percentage: number;
+  total_fund_amount: number;
+  cash_total: number;
+  symbol_summary_list: SymbolSummary[];
+}
+
+// Interface for the overall response
+export interface GetPortfolioSummaryResponse {
+  portfolio_summary_data: PortfolioSummaryData | {};
+}

@@ -77,8 +77,10 @@ export default function SymbolDetail() {
           <Box
             sx={{
               height: "500px",
-              border: "2px solid #FFFFFF",
-              borderRadius: "12px",
+              borderColor: "divider",
+              borderWidth: 1,
+              borderStyle: "solid",
+              borderRadius: 2,
               marginTop: "1rem",
             }}
           >

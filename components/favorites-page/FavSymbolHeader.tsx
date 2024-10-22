@@ -30,7 +30,7 @@ export default function FavSymbolHeader() {
       <Modal open={open} onClose={handleClose}>
         <Box sx={modalBoxStyle}>
           <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Select Favorite Symbols
           </Typography>
           <SymbolEditList open={open} />
         </Box>

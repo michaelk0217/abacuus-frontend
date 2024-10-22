@@ -252,9 +252,11 @@ export default function MacdBBCell({
   return (
     <Box
       sx={{
-        border: "2px solid #FFFFFF",
-        borderRadius: "12px",
-        p: 1,
+        borderColor: "divider",
+        borderWidth: 1,
+        borderStyle: "solid",
+        borderRadius: 2,
+        padding: 2,
         fontSize: "12px",
         // marginY: "1rem",
       }}
