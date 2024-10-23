@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 
 export default function Layout(props: { children: React.ReactNode }) {
   return (
-    <DashboardLayout>
+    <DashboardLayout disableCollapsibleSidebar>
       {/* <PageContainer>{props.children}</PageContainer> */}
 
       <Box sx={{ padding: 4 }}>{props.children}</Box>

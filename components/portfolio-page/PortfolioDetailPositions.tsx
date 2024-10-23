@@ -14,7 +14,7 @@ export default function PortfolioDetailPositions({
     <Box>
       <Box>
         <Typography variant="h5">Positions</Typography>
-        <Divider />
+        <Divider sx={{ width: "420px" }} />
       </Box>
 
       <Stack sx={{ mt: 1 }}>

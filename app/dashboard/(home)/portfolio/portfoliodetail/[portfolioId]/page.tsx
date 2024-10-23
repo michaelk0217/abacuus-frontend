@@ -5,22 +5,39 @@ import Box from "@mui/material/Box";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { CSapiGetCall } from "@/lib/backend-api/api";
-import type { PortfolioSummaryData } from "@/lib/backend-api/interfaces";
+import type {
+  DailySummaryRecord,
+  PortfolioSummaryData,
+} from "@/lib/backend-api/interfaces";
 import PortfolioDetailSummary from "@/components/portfolio-page/PortfolioDetailSummary";
 import Divider from "@mui/material/Divider";
 import PortfolioBreadCrumb from "@/components/portfolio-page/PortfolioBreadCrumb";
 import Grid from "@mui/material/Grid2";
 import PortfolioDetailPositions from "@/components/portfolio-page/PortfolioDetailPositions";
 import PortfolioDetailTradingRecords from "@/components/portfolio-page/PortfolioDetailTradingRecords";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
+
 export default function PortfolioDetailPage() {
   const { portfolioId } = useParams();
 
-  const url = `${process.env.NEXT_PUBLIC_ABACUUS_API_URL}/get_portfolio_summary_data/?portfolio_config_id=${portfolioId}`;
+  const portfolio_summary_url = `${process.env.NEXT_PUBLIC_ABACUUS_API_URL}/get_portfolio_summary_data/?portfolio_config_id=${portfolioId}`;
+  const daily_trading_records_url = `${process.env.NEXT_PUBLIC_ABACUUS_API_URL}/get_daily_summary_record_list/?portfolio_config_id=${portfolioId}`;
+
   const [data, setData] = useState<PortfolioSummaryData>(
     {} as PortfolioSummaryData
   );
+
+  const [dailyTradingRecords, setDailyTradingRecords] = useState<
+    DailySummaryRecord[]
+  >([]);
+  const [recordLoading, setRecordLoading] = useState(true);
+
   const [loading, setLoading] = useState(true);
   const { data: session } = useSession({ required: true });
+
+  const theme = useTheme();
+  const breakpoint = useMediaQuery(theme.breakpoints.down(1250));
 
   useEffect(() => {
     let isMounted = true;
@@ -30,7 +47,7 @@ export default function PortfolioDetailPage() {
         return;
       }
       try {
-        const data = await CSapiGetCall(session, url);
+        const data = await CSapiGetCall(session, portfolio_summary_url);
         const favSymbolData = data.portfolio_summary_data;
         if (isMounted) {
           setData(favSymbolData);
@@ -54,7 +71,35 @@ export default function PortfolioDetailPage() {
       clearInterval(intervalId);
       isMounted = false;
     };
-  }, [url, session]);
+  }, [portfolio_summary_url, session]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchData = async () => {
+      if (!session) {
+        return;
+      }
+      try {
+        const recordData = await CSapiGetCall(
+          session,
+          daily_trading_records_url
+        );
+        const recordList = recordData.daily_summary_record_list;
+        if (isMounted) {
+          setDailyTradingRecords(recordList);
+          console.log("recordList", recordList);
+          setRecordLoading(false);
+        }
+      } catch (error) {
+        console.error("Error fetching daily trading records:", error);
+        setRecordLoading(false);
+      }
+    };
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, [session, daily_trading_records_url]);
 
   if (loading) {
     return <Box>Loading...</Box>;
@@ -70,14 +115,20 @@ export default function PortfolioDetailPage() {
       <Divider />
 
       <PortfolioDetailSummary data={data} />
-      <Grid container spacing={2} maxWidth="800px">
-        <Grid size={{ xs: 12, md: 6 }}>
+      <Grid container spacing={2} maxWidth="840px">
+        <Grid size={breakpoint ? 12 : 6}>
           <PortfolioDetailPositions
             symbolSummaryList={data.symbol_summary_list}
           />
         </Grid>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <PortfolioDetailTradingRecords />
+        <Grid size={breakpoint ? 12 : 6}>
+          {recordLoading ? (
+            <Box>Loading...</Box>
+          ) : (
+            <PortfolioDetailTradingRecords
+              dailyTradingRecords={dailyTradingRecords}
+            />
+          )}
         </Grid>
       </Grid>
     </Box>

@@ -29,7 +29,7 @@ function SymbolAction({ action }: { action: string }) {
       variant="subtitle1"
       bgcolor={action == "1" ? "#02e32b" : "red"}
       color="black"
-      px={1}
+      px={1.1}
       py={0}
       borderRadius={0.5}
     >
@@ -46,10 +46,14 @@ export default function PortfolioDetailPositionCell({
   return (
     <Box
       sx={{
-        width: "400px",
+        width: "420px",
+        height: " 134px",
         // minWidth: "400px",
         bgcolor: "background.paper",
         borderRadius: 2,
+        borderColor: "divider",
+        borderWidth: 1,
+        borderStyle: "solid",
         px: 2,
         py: 1,
         my: 0.5,

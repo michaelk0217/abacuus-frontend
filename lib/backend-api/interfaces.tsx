@@ -163,3 +163,23 @@ export interface PortfolioSummaryData {
 export interface GetPortfolioSummaryResponse {
   portfolio_summary_data: PortfolioSummaryData | {};
 }
+
+// for "/get_daily_summary_record_list/"
+export interface DailySummaryRecord {
+  portfolio_config_id: number;
+  date: string;
+  balance: number;
+  cash_total: number;
+  change: number;
+  change_percentage: number;
+  performance: number;
+  total_cash_used: number;
+  cash_adjustment: number;
+  cash_in_out: number;
+  trading_symbol_list: TradingRecordSymbolList[];
+}
+
+export interface TradingRecordSymbolList {
+  ticker_symbol: string;
+  trading_shares: number;
+}

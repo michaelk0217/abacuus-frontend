@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import type { PortfolioSummaryData } from "@/lib/backend-api/interfaces";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
-
-import { useRef, useState, useEffect } from "react";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
 
 function SummaryRow({ children }: { children: React.ReactNode }) {
   return (
@@ -25,24 +25,8 @@ export default function PortfolioDetailSummary({
 }: {
   data: PortfolioSummaryData;
 }) {
-  //     const containerRef = useRef<HTMLDivElement>(null);
-  //   const [isSmallContainer, setIsSmallContainer] = useState(false);
-
-  //   useEffect(() => {
-  //     const handleResize = () => {
-  //       if (containerRef.current) {
-  //         setIsSmallContainer(containerRef.current.offsetWidth < 700);
-  //       }
-  //     };
-
-  //     handleResize(); // Check initial container width
-
-  //     window.addEventListener("resize", handleResize);
-  //     return () => {
-  //       window.removeEventListener("resize", handleResize);
-  //     };
-  //   }, []);
-
+  const theme = useTheme();
+  const breakpoint = useMediaQuery(theme.breakpoints.down(1100));
   return (
     <Grid
       container
@@ -50,7 +34,7 @@ export default function PortfolioDetailSummary({
       direction="row"
       sx={{
         width: "100%",
-        maxWidth: "700px",
+        maxWidth: "850px",
         borderColor: "divider",
         borderWidth: 1,
         borderStyle: "solid",
@@ -58,9 +42,10 @@ export default function PortfolioDetailSummary({
         px: 2,
         py: 1,
         my: 2,
+        bgcolor: "background.paper",
       }}
     >
-      <Grid container spacing={2} direction="column" size={{ xs: 12, md: 6 }}>
+      <Grid container spacing={2} direction="column" size={breakpoint ? 12 : 6}>
         <Grid>
           <SummaryRow>
             <Typography variant="subtitle1" color="text.secondary">
@@ -93,7 +78,7 @@ export default function PortfolioDetailSummary({
         </Grid>
       </Grid>
 
-      <Grid container spacing={2} direction="column" size={{ xs: 12, md: 6 }}>
+      <Grid container spacing={2} direction="column" size={breakpoint ? 12 : 6}>
         <Grid>
           <SummaryRow>
             <Typography variant="subtitle1" color="text.secondary">
