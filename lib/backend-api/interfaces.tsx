@@ -183,3 +183,36 @@ export interface TradingRecordSymbolList {
   ticker_symbol: string;
   trading_shares: number;
 }
+
+// for "/get_daily_record_list/"
+export interface DailyRecordList {
+  portfolio_config_id: number;
+  date: string;
+  balance: number;
+  cash_total: number;
+  change: number;
+  change_percentage: number;
+  performance: number;
+  total_cash_used: number;
+  cash_adjustment: number;
+  cash_in_out: number;
+  interest_fee: number;
+  trading_symbol_list: TradingRecordSymbolList[];
+  daily_symbol_record_list: DailySymbolRecord[];
+}
+
+export interface DailySymbolRecord {
+  portfolio_config_id: number;
+  ticker_symbol: string;
+  date: string;
+  average_price: number;
+  trading_shares: number;
+  total_fees: number;
+  total_cash_used: number;
+  no_tradings: number;
+  shares_to_buy: number;
+}
+
+export interface GetDailyRecordListResponse {
+  daily_record_list: DailyRecordList;
+}

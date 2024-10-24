@@ -1,8 +1,14 @@
+"use client";
 import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
+import { Fade, Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import type { DailySummaryRecord } from "@/lib/backend-api/interfaces";
 import Grid from "@mui/material/Grid2";
+import { useState, lazy, Suspense } from "react";
+import Modal from "@mui/material/Modal";
+import Backdrop from "@mui/material/Backdrop";
+import PortfolioDetailRecordModalContent from "@/components/portfolio-page/PortfolioDetailRecordModalContent";
+// const PortfolioDetailRecordModalContent = lazy(() => import("@/components/portfolio-page/PortfolioDetailRecordModalContent"));
 
 function TradingRecordRow({
   children,
@@ -28,8 +34,43 @@ export default function PortfolioDetailTradingRecords({
 }: {
   dailyTradingRecords: DailySummaryRecord[];
 }) {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [recordListParams, setRecordListParams] = useState<{
+    portfolioId: number;
+    date: string;
+  }>({ portfolioId: 0, date: "" });
+  const handleModalOpen = (portfolioId: number, date: string) => {
+    setModalOpen(true);
+    setRecordListParams({ portfolioId, date });
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
   return (
     <>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={modalOpen}
+        onClose={handleModalClose}
+        // closeAfterTransition
+        // slots={{ backdrop: Backdrop }}
+        // slotProps={{
+        //   backdrop: {
+        //     timeout: 500,
+        //   },
+        // }}
+      >
+        {/* <Fade in={modalOpen}> */}
+        <PortfolioDetailRecordModalContent
+          portfolioId={recordListParams.portfolioId}
+          date={recordListParams.date}
+        />
+        {/* </Fade> */}
+      </Modal>
+
       <Box>
         <Typography variant="h5">Daily Trading Records</Typography>
         <Divider sx={{ width: "420px" }} />
@@ -58,6 +99,9 @@ export default function PortfolioDetailTradingRecords({
                 py: 1,
                 my: 1,
               }}
+              onClick={() =>
+                handleModalOpen(record.portfolio_config_id, record.date)
+              }
             >
               <Typography variant="subtitle1">{record.date}</Typography>
 

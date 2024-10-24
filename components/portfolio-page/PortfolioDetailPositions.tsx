@@ -19,7 +19,10 @@ export default function PortfolioDetailPositions({
 
       <Stack sx={{ mt: 1 }}>
         {symbolSummaryList.map((symbolSummary) => (
-          <PortfolioDetailPositionCell symbolSummary={symbolSummary} />
+          <PortfolioDetailPositionCell
+            key={symbolSummary.ticker_symbol}
+            symbolSummary={symbolSummary}
+          />
         ))}
       </Stack>
     </Box>
